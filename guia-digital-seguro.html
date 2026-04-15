@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guia de Bolso Digital Seguro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Nunito', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+          },
+          colors: {
+            navy: { 50:'#eef2ff', 100:'#e0e7ff', 500:'#3730a3', 600:'#312e81', 700:'#1e1b4b' },
+            teal: { 400:'#2dd4bf', 500:'#14b8a6', 600:'#0d9488' },
+            amber: { 400:'#fbbf24', 500:'#f59e0b', 600:'#d97706' },
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.4s ease-out',
+            'slide-up': 'slideUp 0.4s ease-out',
+            'bounce-in': 'bounceIn 0.5s ease-out',
+            'shake': 'shake 0.4s ease-in-out',
+          },
+          keyframes: {
+            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            bounceIn: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '70%': { transform: 'scale(1.05)' }, '100%': { transform: 'scale(1)', opacity: '1' } },
+            shake: { '0%,100%': { transform: 'translateX(0)' }, '20%,60%': { transform: 'translateX(-6px)' }, '40%,80%': { transform: 'translateX(6px)' } },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Nunito', sans-serif; }
+    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+    .card-hover:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+    .option-btn { transition: all 0.18s ease; }
+    .option-btn:hover:not(:disabled) { transform: translateX(6px); }
+    .progress-bar { transition: width 0.6s cubic-bezier(.4,0,.2,1); }
+    .module-badge { font-size: 2rem; }
+    .tip-box { border-left: 4px solid; }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+  </style>
+</head>
+<body class="min-h-screen" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f3460 100%);">
+
+<!-- TOPO -->
+<header class="text-center py-8 px-4 animate-fade-in">
+  <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur rounded-2xl px-6 py-3 mb-4">
+    <span class="text-2xl">🛡️</span>
+    <span class="text-white/80 font-bold text-sm tracking-widest uppercase">Guia de Bolso</span>
+  </div>
+  <h1 class="text-white font-black text-4xl md:text-5xl leading-tight mb-2">Digital Seguro</h1>
+  <p class="text-blue-200 text-lg max-w-xl mx-auto">Aprenda sobre IA, LGPD, Pix e como se proteger de fraudes — de forma simples e prática.</p>
+</header>
+
+<!-- CONTAINER PRINCIPAL -->
+<main id="app" class="max-w-2xl mx-auto px-4 pb-16">
+
+  <!-- TELA: INÍCIO -->
+  <div id="screen-home" class="animate-slide-up">
+    <div class="bg-white rounded-3xl shadow-2xl p-8 mb-6">
+      <p class="text-slate-500 text-center mb-6 text-lg">Este guia tem <strong class="text-slate-700">4 módulos</strong> com perguntas e explicações. Leia com calma — não tem pressa!</p>
+      <div class="grid grid-cols-2 gap-4 mb-8">
+        <!-- Módulos -->
+        <div class="card-hover bg-indigo-50 border border-indigo-100 rounded-2xl p-5 cursor-default">
+          <div class="text-3xl mb-2">🤖</div>
+          <div class="font-bold text-indigo-800 text-lg">Módulo 1</div>
+          <div class="text-indigo-600 font-semibold text-sm">Inteligência Artificial</div>
+        </div>
+        <div class="card-hover bg-teal-50 border border-teal-100 rounded-2xl p-5 cursor-default">
+          <div class="text-3xl mb-2">🔒</div>
+          <div class="font-bold text-teal-800 text-lg">Módulo 2</div>
+          <div class="text-teal-600 font-semibold text-sm">LGPD & Seus Dados</div>
+        </div>
+        <div class="card-hover bg-amber-50 border border-amber-100 rounded-2xl p-5 cursor-default">
+          <div class="text-3xl mb-2">⚡</div>
+          <div class="font-bold text-amber-800 text-lg">Módulo 3</div>
+          <div class="text-amber-600 font-semibold text-sm">Pix Seguro</div>
+        </div>
+        <div class="card-hover bg-rose-50 border border-rose-100 rounded-2xl p-5 cursor-default">
+          <div class="text-3xl mb-2">🚨</div>
+          <div class="font-bold text-rose-800 text-lg">Módulo 4</div>
+          <div class="text-rose-600 font-semibold text-sm">Fraudes Digitais</div>
+        </div>
+      </div>
+      <button onclick="startQuiz()" class="w-full bg-indigo-700 hover:bg-indigo-800 active:scale-95 text-white font-black text-xl py-5 rounded-2xl shadow-lg transition-all duration-200">
+        Começar o Guia 🚀
+      </button>
+    </div>
+    <p class="text-center text-blue-200 text-sm">Baseado em estudos da ANPPREV, PUCRS, Jusbrasil e SciELO (2023–2025)</p>
+  </div>
+
+  <!-- TELA: QUIZ -->
+  <div id="screen-quiz" class="hidden animate-slide-up">
+
+    <!-- Barra de progresso -->
+    <div class="bg-white/20 rounded-full h-3 mb-3 overflow-hidden">
+      <div id="progress-bar" class="progress-bar h-3 rounded-full bg-gradient-to-r from-teal-400 to-indigo-400" style="width:0%"></div>
+    </div>
+    <div class="flex justify-between text-white/70 text-sm font-semibold mb-6 px-1">
+      <span id="progress-label">Questão 1 de 12</span>
+      <span id="score-label">✨ 0 pontos</span>
+    </div>
+
+    <!-- Card da questão -->
+    <div id="question-card" class="bg-white rounded-3xl shadow-2xl p-8 mb-4 animate-slide-up">
+
+      <!-- Cabeçalho do módulo -->
+      <div id="module-header" class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+        <div id="module-icon" class="text-4xl"></div>
+        <div>
+          <div id="module-name" class="font-black text-lg"></div>
+          <div id="module-subtitle" class="text-slate-500 text-sm font-semibold"></div>
+        </div>
+      </div>
+
+      <!-- Pergunta -->
+      <p id="question-text" class="text-slate-800 font-bold text-xl md:text-2xl leading-snug mb-8"></p>
+
+      <!-- Opções -->
+      <div id="options-container" class="space-y-3"></div>
+
+      <!-- Feedback (aparece após responder) -->
+      <div id="feedback-box" class="hidden mt-6 rounded-2xl p-5 animate-bounce-in">
+        <div class="flex items-start gap-3">
+          <div id="feedback-icon" class="text-3xl flex-shrink-0"></div>
+          <div>
+            <div id="feedback-title" class="font-black text-lg mb-1"></div>
+            <p id="feedback-text" class="font-semibold text-base leading-relaxed"></p>
+          </div>
+        </div>
+        <div id="tip-box" class="hidden mt-4 rounded-xl p-4 tip-box">
+          <div class="flex items-start gap-2">
+            <span class="text-xl">💡</span>
+            <p id="tip-text" class="font-semibold text-sm leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botão Próxima -->
+      <button id="btn-next" onclick="nextQuestion()" class="hidden w-full mt-6 bg-indigo-700 hover:bg-indigo-800 active:scale-95 text-white font-black text-lg py-4 rounded-2xl shadow transition-all duration-200">
+        Próxima Pergunta →
+      </button>
+    </div>
+  </div>
+
+  <!-- TELA: RESULTADO FINAL -->
+  <div id="screen-result" class="hidden animate-bounce-in">
+    <div class="bg-white rounded-3xl shadow-2xl p-8 text-center">
+      <div id="result-emoji" class="text-7xl mb-4"></div>
+      <h2 id="result-title" class="font-black text-3xl mb-2 text-slate-800"></h2>
+      <p id="result-subtitle" class="text-slate-500 text-lg mb-6"></p>
+
+      <div class="bg-slate-50 rounded-2xl p-6 mb-6">
+        <div class="text-5xl font-black text-indigo-700 mb-1" id="result-score"></div>
+        <div class="text-slate-500 font-semibold">pontos de 12 questões</div>
+        <div id="result-bar-wrap" class="mt-4 bg-slate-200 rounded-full h-4 overflow-hidden">
+          <div id="result-bar" class="h-4 rounded-full bg-gradient-to-r from-teal-400 to-indigo-500 progress-bar" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Resumo por módulo -->
+      <div class="grid grid-cols-2 gap-3 mb-8 text-left">
+        <div id="summary-0" class="rounded-xl p-4 bg-indigo-50 border border-indigo-100">
+          <div class="text-xl mb-1">🤖</div>
+          <div class="font-black text-indigo-800 text-sm">Inteligência Artificial</div>
+          <div id="summary-0-score" class="text-indigo-600 font-bold text-lg"></div>
+        </div>
+        <div id="summary-1" class="rounded-xl p-4 bg-teal-50 border border-teal-100">
+          <div class="text-xl mb-1">🔒</div>
+          <div class="font-black text-teal-800 text-sm">LGPD & Dados</div>
+          <div id="summary-1-score" class="text-teal-600 font-bold text-lg"></div>
+        </div>
+        <div id="summary-2" class="rounded-xl p-4 bg-amber-50 border border-amber-100">
+          <div class="text-xl mb-1">⚡</div>
+          <div class="font-black text-amber-800 text-sm">Pix Seguro</div>
+          <div id="summary-2-score" class="text-amber-600 font-bold text-lg"></div>
+        </div>
+        <div id="summary-3" class="rounded-xl p-4 bg-rose-50 border border-rose-100">
+          <div class="text-xl mb-1">🚨</div>
+          <div class="font-black text-rose-800 text-sm">Fraudes Digitais</div>
+          <div id="summary-3-score" class="text-rose-600 font-bold text-lg"></div>
+        </div>
+      </div>
+
+      <!-- Dicas finais -->
+      <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5 mb-6 text-left">
+        <h3 class="font-black text-indigo-800 text-base mb-3">📌 Leve sempre com você:</h3>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2 text-indigo-700 font-semibold text-sm"><span>✅</span> Desconfie de mensagens urgentes pedindo dinheiro ou dados</li>
+          <li class="flex items-start gap-2 text-indigo-700 font-semibold text-sm"><span>✅</span> Ligue sempre para confirmar pelo número oficial do banco</li>
+          <li class="flex items-start gap-2 text-indigo-700 font-semibold text-sm"><span>✅</span> Você tem o direito de saber como seus dados são usados (LGPD)</li>
+          <li class="flex items-start gap-2 text-indigo-700 font-semibold text-sm"><span>✅</span> A IA pode ajudar, mas a decisão final é sempre sua</li>
+          <li class="flex items-start gap-2 text-indigo-700 font-semibold text-sm"><span>✅</span> Em caso de fraude: registre Boletim de Ocorrência e fale com o banco</li>
+        </ul>
+      </div>
+
+      <button onclick="resetQuiz()" class="w-full bg-indigo-700 hover:bg-indigo-800 active:scale-95 text-white font-black text-lg py-4 rounded-2xl shadow transition-all duration-200 mb-3">
+        🔄 Refazer o Guia
+      </button>
+      <p class="text-slate-400 text-xs">Baseado em: ANDRADE (2025), NARDI & LUTZKY (2023), ENCARNAÇÃO (2025), SILVA (2025)</p>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ============================================================
+// DADOS DO QUIZ
+// ============================================================
+const modules = [
+  {
+    icon: '🤖',
+    name: 'Módulo 1',
+    subtitle: 'Inteligência Artificial (IA)',
+    color: 'indigo',
+    headerBg: 'bg-indigo-50',
+    headerText: 'text-indigo-800',
+    headerSub: 'text-indigo-500',
+  },
+  {
+    icon: '🔒',
+    name: 'Módulo 2',
+    subtitle: 'LGPD – Proteção de Dados',
+    color: 'teal',
+    headerBg: 'bg-teal-50',
+    headerText: 'text-teal-800',
+    headerSub: 'text-teal-500',
+  },
+  {
+    icon: '⚡',
+    name: 'Módulo 3',
+    subtitle: 'Pix Seguro',
+    color: 'amber',
+    headerBg: 'bg-amber-50',
+    headerText: 'text-amber-800',
+    headerSub: 'text-amber-500',
+  },
+  {
+    icon: '🚨',
+    name: 'Módulo 4',
+    subtitle: 'Fraudes Digitais',
+    color: 'rose',
+    headerBg: 'bg-rose-50',
+    headerText: 'text-rose-800',
+    headerSub: 'text-rose-500',
+  },
+];
+
+const questions = [
+  // === MÓDULO 1: IA ===
+  {
+    moduleIndex: 0,
+    text: 'O que é Inteligência Artificial (IA)?',
+    options: [
+      'Um robô físico que substitui completamente os humanos',
+      'Sistemas de computador que simulam o raciocínio e o aprendizado humano',
+      'Um vírus perigoso que invade computadores',
+      'Um aplicativo de redes sociais',
+    ],
+    correct: 1,
+    feedback: 'Isso mesmo! A IA são programas que aprendem padrões a partir de dados para tomar decisões e realizar tarefas — como reconhecer sua voz, sugerir músicas ou detectar fraudes bancárias.',
+    tip: 'Segundo Andrade (2025), a IA já é usada pelo INSS para detectar fraudes previdenciárias, protegendo benefícios de quem realmente precisa.',
+    feedbackWrong: 'Não exatamente. A IA não é um robô físico nem um vírus — são programas inteligentes que aprendem com dados para ajudar as pessoas e instituições.',
+  },
+  {
+    moduleIndex: 0,
+    text: 'Em quais situações a IA pode estar te ajudando sem que você perceba?',
+    options: [
+      'Quando você acende a luz de casa',
+      'Quando você usa o telefone fixo',
+      'Nas sugestões de músicas ou filmes em aplicativos de streaming',
+      'Quando você assiste televisão aberta',
+    ],
+    correct: 2,
+    feedback: 'Correto! Serviços como Spotify e Netflix usam IA para entender seus gostos e sugerir conteúdos. Também está nos sistemas de detecção de fraudes do seu banco.',
+    tip: 'A IA está presente no seu celular (reconhecimento de voz), no banco (alertas de transações suspeitas) e até no e-mail (filtro de spam).',
+    feedbackWrong: 'Na verdade, a IA está muito presente nos aplicativos digitais. Ela analisa seus hábitos para sugerir músicas, filmes e proteger suas contas bancárias.',
+  },
+  {
+    moduleIndex: 0,
+    text: 'Qual é o cuidado mais importante ao lidar com sistemas que usam IA?',
+    options: [
+      'Compartilhar todos os seus dados pessoais para a IA funcionar melhor',
+      'Desconfiar de respostas muito perfeitas e sempre verificar informações importantes',
+      'Deixar a IA tomar todas as decisões da sua vida',
+      'Nunca usar tecnologia para evitar riscos',
+    ],
+    correct: 1,
+    feedback: 'Muito bem! A IA pode errar, inventar informações e ser usada por golpistas. Sempre confirme informações importantes com fontes oficiais antes de agir.',
+    tip: 'Silva (2025) alerta: quem controla seus dados tem poder. Por isso, só forneça seus dados a serviços confiáveis e leia as políticas de uso.',
+    feedbackWrong: 'Cuidado! A IA pode errar e até ser usada por criminosos. O segredo é não agir por impulso: verifique informações importantes antes de tomar qualquer decisão.',
+  },
+
+  // === MÓDULO 2: LGPD ===
+  {
+    moduleIndex: 1,
+    text: 'O que significa a sigla LGPD?',
+    options: [
+      'Lei Geral de Proteção Digital',
+      'Lei Geral de Prevenção de Danos',
+      'Lei Geral de Proteção de Dados Pessoais',
+      'Lei de Garantia de Privacidade Digital',
+    ],
+    correct: 2,
+    feedback: 'Correto! A Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018) protege seus dados pessoais como nome, CPF, endereço, saúde e muito mais.',
+    tip: 'A LGPD está em vigor desde 2020 e a ANPD (Autoridade Nacional de Proteção de Dados) fiscaliza seu cumprimento. Empresas que descumprem podem pagar multas altas.',
+    feedbackWrong: 'LGPD significa Lei Geral de Proteção de Dados Pessoais. É uma lei brasileira que garante que suas informações pessoais sejam usadas de forma responsável.',
+  },
+  {
+    moduleIndex: 1,
+    text: 'Qual é um dos seus direitos garantidos pela LGPD?',
+    options: [
+      'Receber compensação financeira de empresas que usam seus dados',
+      'Solicitar a exclusão dos seus dados pessoais de uma empresa',
+      'Proibir qualquer uso de computadores no país',
+      'Ganhar prêmios por cadastrar seus dados em sites',
+    ],
+    correct: 1,
+    feedback: 'Isso mesmo! Você tem o direito de pedir para uma empresa apagar seus dados, saber quais dados ela tem sobre você e retirar seu consentimento a qualquer momento.',
+    tip: 'Nardi & Lutzky (2023) destacam que a LGPD garante 9 direitos ao titular dos dados, incluindo acesso, correção, exclusão e portabilidade das suas informações.',
+    feedbackWrong: 'Pela LGPD, você pode pedir que empresas mostrem, corrijam ou excluam seus dados pessoais. É seu direito legal — não precisa aceitar qualquer uso dos seus dados!',
+  },
+  {
+    moduleIndex: 1,
+    text: 'Quando uma empresa pede seus dados pessoais, ela é obrigada a:',
+    options: [
+      'Usar seus dados da forma que quiser, sem te avisar',
+      'Informar para qual finalidade os dados serão usados e pedir seu consentimento',
+      'Guardar seus dados para sempre, mesmo depois de você pedir a exclusão',
+      'Compartilhar automaticamente com outras empresas parceiras',
+    ],
+    correct: 1,
+    feedback: 'Correto! Pela LGPD, toda empresa deve ser transparente: dizer por que quer seus dados, como vai usá-los e só coletar o que for necessário para a finalidade informada.',
+    tip: 'Se uma empresa não explicar claramente para que vai usar seus dados, você tem o direito de não fornecê-los. Desconfie de quem pede dados demais para um serviço simples.',
+    feedbackWrong: 'A LGPD proíbe isso! A empresa deve sempre explicar para que vai usar seus dados e pedir sua autorização. Você pode negar e ainda assim usar muitos serviços.',
+  },
+
+  // === MÓDULO 3: PIX ===
+  {
+    moduleIndex: 2,
+    text: 'Qual situação é um sinal de alerta claro ao usar o Pix?',
+    options: [
+      'Receber o comprovante de depósito antes de enviar qualquer valor',
+      'Confirmar a chave Pix com o destinatário por telefone antes de transferir',
+      'Receber uma ligação urgente dizendo que seu filho está em apuros e pedindo Pix imediato',
+      'Fazer Pix para uma conta que você já conhece e utilizou antes',
+    ],
+    correct: 2,
+    feedback: 'Atenção! Esse é o famoso "golpe do falso sequestro" ou "golpe do filho". Criminosos ligam se passando por parente ou médico para criar desespero e fazer você agir sem pensar.',
+    tip: 'Encarnação (2025) aponta que golpes emocionais via Pix cresceram muito. Sempre ligue de volta para o número de celular do familiar antes de transferir qualquer valor.',
+    feedbackWrong: 'Cuidado! Ligações urgentes pedindo Pix são um dos golpes mais comuns no Brasil. Nunca transfira dinheiro sob pressão — ligue para a pessoa pelo número que você já tem antes.',
+  },
+  {
+    moduleIndex: 2,
+    text: 'Antes de confirmar um Pix, o que você deve SEMPRE fazer?',
+    options: [
+      'Enviar logo o dinheiro para não perder a "oportunidade única"',
+      'Confiar em qualquer mensagem que chega pelo WhatsApp',
+      'Verificar o nome completo do destinatário que aparece na tela de confirmação',
+      'Usar a rede Wi-Fi pública disponível para fazer a operação mais rápido',
+    ],
+    correct: 2,
+    feedback: 'Correto! A tela de confirmação do Pix sempre mostra o nome do destinatário antes de você autorizar. Se o nome não for da pessoa ou empresa esperada, cancele imediatamente.',
+    tip: 'Nunca faça Pix usando Wi-Fi público (shopping, aeroporto, praça). Use sempre os dados móveis do seu celular para transações financeiras.',
+    feedbackWrong: 'O passo mais importante é verificar o nome que aparece na confirmação. Se não for quem você esperava, pare tudo e confirme por telefone antes de enviar.',
+  },
+  {
+    moduleIndex: 2,
+    text: 'O que é o "Pix por aproximação falso"?',
+    options: [
+      'Quando o celular toca próximo à maquininha',
+      'Quando criminosos usam um segundo celular para cobrar um valor diferente do que você viu na tela da loja',
+      'Quando você paga pelo aplicativo sem senha',
+      'Quando o banco aprova transações automaticamente',
+    ],
+    correct: 1,
+    feedback: 'Isso! Golpistas usam um segundo aparelho de maquininha com valor maior. Você aproxima o celular, pensa que pagou o valor correto, mas pagou mais. Sempre confira o valor no seu celular!',
+    tip: 'Após qualquer pagamento, confirme o extrato no aplicativo do banco. Valores diferentes do combinado devem ser contestados imediatamente com o estabelecimento e com o banco.',
+    feedbackWrong: 'Esse golpe está crescendo: criminosos usam um segundo aparelho para cobrar valores maiores. Sempre olhe o valor exato na tela do SEU celular antes de confirmar qualquer pagamento.',
+  },
+
+  // === MÓDULO 4: FRAUDES ===
+  {
+    moduleIndex: 3,
+    text: 'O que é "phishing"?',
+    options: [
+      'Uma técnica de pesca esportiva popular no Brasil',
+      'Mensagens falsas que imitam empresas reais para roubar seus dados',
+      'Um vírus que deixa o computador mais rápido',
+      'Um aplicativo de segurança bancária',
+    ],
+    correct: 1,
+    feedback: 'Correto! "Phishing" vem de "pescar" em inglês. Golpistas "pescam" suas informações enviando e-mails, SMS ou mensagens falsas que parecem ser do banco, Correios, Receita Federal etc.',
+    tip: 'Desconfie de mensagens que pedem urgência, ameaçam bloquear sua conta ou oferecem prêmios. Empresas sérias nunca pedem senha ou dados completos por mensagem.',
+    feedbackWrong: 'Phishing são mensagens falsas que imitam empresas conhecidas para roubar seus dados. O nome vem do inglês "fishing" (pescar) — eles "pescam" vítimas com iscas digitais.',
+  },
+  {
+    moduleIndex: 3,
+    text: 'Você recebe uma mensagem dizendo que ganhou um prêmio e pedindo seus dados bancários. O que fazer?',
+    options: [
+      'Responder imediatamente com seus dados para não perder o prêmio',
+      'Clicar no link para descobrir qual é o prêmio',
+      'Ignorar completamente e denunciar a mensagem',
+      'Compartilhar com amigos e família para avisar sobre o prêmio',
+    ],
+    correct: 2,
+    feedback: 'Muito bem! Promoções que pedem dados bancários para liberar prêmio são 100% golpe. Ignore, delete e denuncie. Nunca clique no link — ele pode instalar vírus no celular.',
+    tip: 'Se receber mensagens suspeitas, denuncie: no WhatsApp, pressione e segure a mensagem e toque em "Denunciar". No e-mail, use a opção "Reportar spam".',
+    feedbackWrong: 'Isso é golpe! Nunca forneça dados bancários para receber prêmio. Empresas legítimas não exigem isso. Ignore, delete e denuncie a mensagem imediatamente.',
+  },
+  {
+    moduleIndex: 3,
+    text: 'Se você suspeitar que foi vítima de fraude digital, qual é a atitude correta?',
+    options: [
+      'Resolver sozinho, sem contar para ninguém para não ter vergonha',
+      'Pagar o que foi pedido para tentar recuperar o dinheiro',
+      'Entrar em contato com o banco pelo número oficial e registrar Boletim de Ocorrência',
+      'Esperar para ver se o problema se resolve sozinho',
+    ],
+    correct: 2,
+    feedback: 'Correto! Agir rápido é fundamental. Ligue para o banco pelo número do verso do cartão, bloqueie cartões e contas, e registre um B.O. — isso ajuda na investigação e pode te ajudar a reaver o dinheiro.',
+    tip: 'Encarnação (2025) destaca que bancos têm responsabilidade legal em casos de fraude. Documente tudo: prints, horários, valores. Não apague mensagens recebidas — são provas!',
+    feedbackWrong: 'Nunca tente resolver fraude sozinho ou pague pedidos de golpistas. O caminho certo é: bloqueie suas contas, ligue para o banco pelo número oficial e registre um Boletim de Ocorrência.',
+  },
+];
+
+// ============================================================
+// ESTADO DO QUIZ
+// ============================================================
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+let moduleScores = [0, 0, 0, 0];
+
+// ============================================================
+// FUNÇÕES
+// ============================================================
+function startQuiz() {
+  document.getElementById('screen-home').classList.add('hidden');
+  document.getElementById('screen-quiz').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  answered = false;
+  const q = questions[currentQuestion];
+  const m = modules[q.moduleIndex];
+  const total = questions.length;
+
+  // Progresso
+  const pct = Math.round((currentQuestion / total) * 100);
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = `Questão ${currentQuestion + 1} de ${total}`;
+  document.getElementById('score-label').textContent = `✨ ${score} pontos`;
+
+  // Módulo header
+  const header = document.getElementById('module-header');
+  header.className = `flex items-center gap-3 mb-6 pb-4 border-b border-slate-100 rounded-xl px-3 py-2 ${m.headerBg}`;
+  document.getElementById('module-icon').textContent = m.icon;
+  document.getElementById('module-name').textContent = m.name;
+  document.getElementById('module-name').className = `font-black text-lg ${m.headerText}`;
+  document.getElementById('module-subtitle').textContent = m.subtitle;
+  document.getElementById('module-subtitle').className = `text-sm font-semibold ${m.headerSub}`;
+
+  // Questão
+  document.getElementById('question-text').textContent = q.text;
+
+  // Opções
+  const container = document.getElementById('options-container');
+  container.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = `option-btn w-full text-left flex items-center gap-4 p-4 rounded-2xl border-2 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50 font-bold text-base text-slate-700 transition-all`;
+    btn.innerHTML = `<span class="flex-shrink-0 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center font-black text-slate-600">${letters[i]}</span><span>${opt}</span>`;
+    btn.onclick = () => selectAnswer(i);
+    container.appendChild(btn);
+  });
+
+  // Esconde feedback e botão
+  document.getElementById('feedback-box').classList.add('hidden');
+  document.getElementById('btn-next').classList.add('hidden');
+  document.getElementById('tip-box').classList.add('hidden');
+
+  // Reanima o card
+  const card = document.getElementById('question-card');
+  card.classList.remove('animate-slide-up');
+  void card.offsetWidth;
+  card.classList.add('animate-slide-up');
+}
+
+function selectAnswer(index) {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[currentQuestion];
+  const m = modules[q.moduleIndex];
+  const isCorrect = index === q.correct;
+  const buttons = document.querySelectorAll('#options-container button');
+
+  // Estiliza botões
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correct) {
+      btn.className = btn.className.replace('border-slate-200', 'border-green-400');
+      btn.classList.add('bg-green-50', 'border-green-400');
+      btn.querySelector('span').className = 'flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-black bg-green-500 text-white';
+    } else if (i === index && !isCorrect) {
+      btn.classList.add('bg-red-50', 'border-red-400', 'animate-shake');
+      btn.querySelector('span').className = 'flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-black bg-red-400 text-white';
+    }
+  });
+
+  // Pontuação
+  if (isCorrect) {
+    score++;
+    moduleScores[q.moduleIndex]++;
+  }
+
+  // Feedback
+  const feedbackBox = document.getElementById('feedback-box');
+  feedbackBox.classList.remove('hidden');
+  feedbackBox.classList.remove('animate-bounce-in');
+  void feedbackBox.offsetWidth;
+  feedbackBox.classList.add('animate-bounce-in');
+
+  if (isCorrect) {
+    feedbackBox.className = `mt-6 rounded-2xl p-5 animate-bounce-in bg-green-50 border border-green-200`;
+    document.getElementById('feedback-icon').textContent = '🎉';
+    document.getElementById('feedback-title').textContent = 'Resposta certa!';
+    document.getElementById('feedback-title').className = 'font-black text-lg text-green-800';
+    document.getElementById('feedback-text').textContent = q.feedback;
+    document.getElementById('feedback-text').className = 'font-semibold text-base leading-relaxed text-green-700';
+  } else {
+    feedbackBox.className = `mt-6 rounded-2xl p-5 animate-bounce-in bg-rose-50 border border-rose-200`;
+    document.getElementById('feedback-icon').textContent = '❌';
+    document.getElementById('feedback-title').textContent = 'Não foi dessa vez!';
+    document.getElementById('feedback-title').className = 'font-black text-lg text-rose-800';
+    document.getElementById('feedback-text').textContent = q.feedbackWrong;
+    document.getElementById('feedback-text').className = 'font-semibold text-base leading-relaxed text-rose-700';
+  }
+
+  // Dica
+  if (q.tip) {
+    const tipBox = document.getElementById('tip-box');
+    tipBox.classList.remove('hidden');
+    tipBox.className = `mt-4 rounded-xl p-4 tip-box bg-amber-50 border-amber-400`;
+    document.getElementById('tip-text').textContent = q.tip;
+    document.getElementById('tip-text').className = 'font-semibold text-sm leading-relaxed text-amber-800';
+  }
+
+  // Botão próxima
+  const btnNext = document.getElementById('btn-next');
+  btnNext.classList.remove('hidden');
+  if (currentQuestion === questions.length - 1) {
+    btnNext.textContent = 'Ver Resultado Final 🏆';
+  } else {
+    btnNext.textContent = 'Próxima Pergunta →';
+  }
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion >= questions.length) {
+    showResult();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResult() {
+  document.getElementById('screen-quiz').classList.add('hidden');
+  document.getElementById('screen-result').classList.remove('hidden');
+
+  const pct = Math.round((score / questions.length) * 100);
+
+  // Emoji e título
+  let emoji, title, subtitle;
+  if (pct >= 90) { emoji = '🏆'; title = 'Excelente! Você é um guardião digital!'; subtitle = 'Você está muito bem preparado para o mundo digital. Compartilhe esse conhecimento!'; }
+  else if (pct >= 70) { emoji = '🌟'; title = 'Muito bom! Você está no caminho certo!'; subtitle = 'Você conhece bem os riscos e cuidados digitais. Continue se atualizando!'; }
+  else if (pct >= 50) { emoji = '📚'; title = 'Bom esforço! Há algumas coisas para revisar.'; subtitle = 'Você acertou mais da metade! Refaça o guia para reforçar os pontos que ficaram.'; }
+  else { emoji = '💪'; title = 'Continue aprendendo — é o começo!'; subtitle = 'O importante é estar aqui aprendendo. Refaça o guia com calma e tire suas dúvidas.'; }
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-subtitle').textContent = subtitle;
+  document.getElementById('result-score').textContent = `${score}/12`;
+
+  setTimeout(() => {
+    document.getElementById('result-bar').style.width = pct + '%';
+  }, 200);
+
+  // Resumo por módulo
+  const questionsPerModule = 3;
+  moduleScores.forEach((s, i) => {
+    document.getElementById(`summary-${i}-score`).textContent = `${s} de ${questionsPerModule} acertos`;
+  });
+}
+
+function resetQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  answered = false;
+  moduleScores = [0, 0, 0, 0];
+  document.getElementById('screen-result').classList.add('hidden');
+  document.getElementById('screen-home').classList.remove('hidden');
+  document.getElementById('screen-home').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
